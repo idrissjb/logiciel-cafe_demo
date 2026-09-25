@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="16" styleClass="screen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.HistoryController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="14">
+            <children>
+                <VBox spacing="2">
+                    <children>
+                        <Label styleClass="screen-title" text="Historique des ventes"/>
+                        <Label fx:id="summaryLabel" styleClass="screen-sub"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="totalLabel" styleClass="kpi-value"/>
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <children>
+                <ToggleButton fx:id="todayChip" styleClass="chip, pressable" text="Aujourd'hui"/>
+                <ToggleButton fx:id="yesterdayChip" styleClass="chip, pressable" text="Hier"/>
+                <ToggleButton fx:id="weekChip" styleClass="chip, pressable" text="7 jours"/>
+                <ToggleButton fx:id="monthChip" styleClass="chip, pressable" text="30 jours"/>
+                <Region prefWidth="10"/>
+                <Label styleClass="screen-sub" text="Du"/>
+                <DatePicker fx:id="fromPicker" prefWidth="160"/>
+                <Label styleClass="screen-sub" text="au"/>
+                <DatePicker fx:id="toPicker" prefWidth="160"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" prefWidth="300" promptText="Rechercher (n° ticket, serveur, table)..."/>
+            </children>
+        </HBox>
+
+        <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+    </children>
+</VBox>

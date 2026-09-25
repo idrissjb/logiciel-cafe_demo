@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="root" spacing="20" styleClass="pos-root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.POSController">
+    <padding>
+        <Insets bottom="20" left="22" right="22" top="18"/>
+    </padding>
+    <children>
+        <!-- Zone produits -->
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <children>
+                        <StackPane HBox.hgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="searchField" promptText="Rechercher un produit..." styleClass="search-field"/>
+                                <Label mouseTransparent="true" styleClass="search-icon, emoji" text="🔍" StackPane.alignment="CENTER_LEFT">
+                                    <StackPane.margin>
+                                        <Insets left="18"/>
+                                    </StackPane.margin>
+                                </Label>
+                                <Button fx:id="clearSearch" focusTraversable="false" onAction="#onClearSearch" styleClass="search-clear, pressable"
+                                        text="✕" visible="false" StackPane.alignment="CENTER_RIGHT">
+                                    <StackPane.margin>
+                                        <Insets right="10"/>
+                                    </StackPane.margin>
+                                </Button>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <ScrollPane fx:id="categoryScroll" fitToHeight="true" pannable="true" hbarPolicy="NEVER" minHeight="64" prefHeight="64" maxHeight="64"
+                            styleClass="flat-scroll, category-scroll" vbarPolicy="NEVER">
+                    <content>
+                        <HBox fx:id="categoryBar" alignment="CENTER_LEFT" spacing="10" styleClass="category-bar"/>
+                    </content>
+                </ScrollPane>
+                <StackPane fx:id="gridHolder" styleClass="grid-holder" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+
+        <!-- Ticket toujours visible -->
+        <StackPane fx:id="ticketHolder" minWidth="400" prefWidth="430" maxWidth="460"/>
+    </children>
+</HBox>

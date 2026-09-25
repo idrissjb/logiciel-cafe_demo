@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cafemanager.ui.SwitchControl?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14" styleClass="screen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.SettingsController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <children>
+                <VBox spacing="2">
+                    <children>
+                        <Label styleClass="screen-title" text="Paramètres"/>
+                        <Label styleClass="screen-sub" text="Établissement, ticket, impression et apparence"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button onAction="#onSave" styleClass="btn, btn-primary, btn-lg, pressable" text="✓  ENREGISTRER"/>
+            </children>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="flat-scroll" VBox.vgrow="ALWAYS">
+            <content>
+                <HBox spacing="18" alignment="TOP_LEFT">
+                    <children>
+                        <!-- ============ colonne gauche ============ -->
+                        <VBox spacing="18" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefWidth="480">
+                            <children>
+                                <VBox spacing="8" styleClass="form-card">
+                                    <children>
+                                        <Label styleClass="section-title" text="ÉTABLISSEMENT"/>
+                                        <Label styleClass="field-label" text="NOM DU CAFÉ"/>
+                                        <TextField fx:id="cafeNameField"/>
+                                        <Label styleClass="field-label" text="ADRESSE"/>
+                                        <TextField fx:id="addressField"/>
+                                        <HBox spacing="12">
+                                            <children>
+                                                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label styleClass="field-label" text="TÉLÉPHONE"/>
+                                                        <TextField fx:id="phoneField"/>
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="8" prefWidth="130">
+                                                    <children>
+                                                        <Label styleClass="field-label" text="DEVISE"/>
+                                                        <TextField fx:id="currencyField"/>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="field-label" text="LOGO"/>
+                                        <HBox alignment="CENTER_LEFT" spacing="10">
+                                            <children>
+                                                <StackPane fx:id="logoHolder" minHeight="56" minWidth="56"/>
+                                                <Button onAction="#onPickLogo" styleClass="btn, btn-secondary, pressable" text="Choisir…"/>
+                                                <Button fx:id="clearLogoButton" onAction="#onClearLogo" styleClass="icon-btn, pressable" text="✕"/>
+                                                <Label fx:id="logoLabel" styleClass="form-hint" HBox.hgrow="ALWAYS"/>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="field-label" text="N° DE CAISSE"/>
+                                        <TextField fx:id="registerField" maxWidth="120"/>
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="10" styleClass="form-card">
+                                    <children>
+                                        <Label styleClass="section-title" text="APPARENCE ET DROITS"/>
+                                        <Label styleClass="field-label" text="THÈME"/>
+                                        <HBox fx:id="themeBox" spacing="4" styleClass="segmented" maxWidth="300">
+                                            <children>
+                                                <ToggleButton fx:id="themeDark" styleClass="segment" text="🌙  Sombre"/>
+                                                <ToggleButton fx:id="themeLight" styleClass="segment" text="☀  Clair"/>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="12">
+                                            <children>
+                                                <SwitchControl fx:id="serverPaySwitch"/>
+                                                <Label text="Les serveurs peuvent encaisser" wrapText="true"/>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- ============ colonne droite ============ -->
+                        <VBox spacing="18" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefWidth="480">
+                            <children>
+                                <VBox spacing="8" styleClass="form-card">
+                                    <children>
+                                        <Label styleClass="section-title" text="TICKET ET IMPRESSION"/>
+                                        <Label styleClass="field-label" text="TVA (%) : prix TTC, TVA incluse (0 = non affichée)"/>
+                                        <TextField fx:id="vatField" maxWidth="140"/>
+                                        <Label styleClass="field-label" text="IMPRIMANTE"/>
+                                        <ComboBox fx:id="printerBox" maxWidth="Infinity"/>
+                                        <Label styleClass="field-label" text="LARGEUR DU PAPIER"/>
+                                        <HBox spacing="4" styleClass="segmented" maxWidth="300">
+                                            <children>
+                                                <ToggleButton fx:id="width58" styleClass="segment" text="58 mm"/>
+                                                <ToggleButton fx:id="width80" styleClass="segment" text="80 mm"/>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="field-label" text="MESSAGE DE BAS DE TICKET"/>
+                                        <TextField fx:id="footerField"/>
+                                        <HBox alignment="CENTER_LEFT" spacing="12">
+                                            <children>
+                                                <SwitchControl fx:id="autoPrintSwitch"/>
+                                                <Label text="Impression automatique après paiement" wrapText="true"/>
+                                            </children>
+                                        </HBox>
+                                        <HBox spacing="10">
+                                            <children>
+                                                <Button onAction="#onTestPreview" styleClass="btn, btn-secondary, pressable" text="👁  Aperçu"/>
+                                                <Button onAction="#onTestPrint" styleClass="btn, btn-secondary, pressable" text="🖨  Ticket de test"/>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="form-hint" text="Les réglages de ticket s'appliquent à l'aperçu de test après enregistrement."
+                                               wrapText="true"/>
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="10" styleClass="form-card">
+                                    <children>
+                                        <Label styleClass="section-title" text="OUTILS DE DÉMONSTRATION"/>
+                                        <Label styleClass="form-hint" wrapText="true"
+                                               text="Générez 30 jours de ventes fictives pour explorer le dashboard et l'historique, ou remettez tout à zéro avant la mise en service."/>
+                                        <HBox spacing="10">
+                                            <children>
+                                                <Button onAction="#onGenerateDemo" styleClass="btn, btn-secondary, pressable" text="✨  Générer des ventes"/>
+                                                <Button onAction="#onResetSales" styleClass="btn, btn-danger-soft, pressable" text="🗑  Effacer les ventes"/>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </content>
+        </ScrollPane>
+    </children>
+</VBox>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cafemanager.ui.SwitchControl?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="18" styleClass="screen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.ProductController">
+    <children>
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <children>
+                        <VBox minWidth="-Infinity" spacing="2">
+                            <children>
+                                <Label styleClass="screen-title" text="Produits"/>
+                                <Label fx:id="countLabel" styleClass="screen-sub"/>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="searchField" prefWidth="170" promptText="Rechercher..."/>
+                        <ComboBox fx:id="categoryFilter" minWidth="-Infinity" prefWidth="210"/>
+                        <Button minWidth="-Infinity" onAction="#onNew" styleClass="btn, btn-primary, pressable" text="＋  NOUVEAU"/>
+                    </children>
+                </HBox>
+                <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxWidth="440" minWidth="410" prefWidth="420" styleClass="flat-scroll">
+            <content>
+                <VBox fx:id="formCard" spacing="8" styleClass="form-card">
+                    <children>
+                        <Label fx:id="formTitle" styleClass="form-title" text="Nouveau produit"/>
+
+                        <Label styleClass="field-label" text="NOM"/>
+                        <TextField fx:id="nameField" promptText="ex. Café normal"/>
+
+                        <Label styleClass="field-label" text="CATÉGORIE"/>
+                        <ComboBox fx:id="categoryBox" maxWidth="Infinity" promptText="Choisir une catégorie"/>
+
+                        <Label styleClass="field-label" text="PRIX"/>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <TextField fx:id="priceField" promptText="0.00" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="currencyLabel" styleClass="input-unit"/>
+                            </children>
+                        </HBox>
+
+                        <Label styleClass="field-label" text="ICÔNE OU IMAGE"/>
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <children>
+                                <TextField fx:id="iconField" prefWidth="70" promptText="☕"/>
+                                <Button onAction="#onToggleEmoji" styleClass="btn, btn-secondary, pressable" text="Icônes"/>
+                                <Button onAction="#onPickImage" styleClass="btn, btn-secondary, pressable" text="Image…"/>
+                                <Button fx:id="clearImageButton" onAction="#onClearImage" styleClass="icon-btn, pressable" text="✕"/>
+                            </children>
+                        </HBox>
+                        <StackPane fx:id="emojiHolder" managed="false" visible="false"/>
+                        <Label fx:id="imageLabel" styleClass="form-hint"/>
+
+                        <HBox alignment="CENTER_LEFT" spacing="18">
+                            <children>
+                                <VBox spacing="14" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="12">
+                                            <children>
+                                                <SwitchControl fx:id="activeSwitch"/>
+                                                <Label text="Disponible"/>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="12">
+                                            <children>
+                                                <SwitchControl fx:id="favoriteSwitch"/>
+                                                <Label text="Favori ⭐"/>
+                                            </children>
+                                        </HBox>
+                                        <Label styleClass="form-hint" text="Un produit indisponible n'apparaît plus en caisse."
+                                               wrapText="true"/>
+                                    </children>
+                                </VBox>
+                                <StackPane fx:id="previewHolder" minHeight="168" minWidth="168"/>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <Button fx:id="deleteButton" onAction="#onDelete" styleClass="btn, btn-danger-soft, pressable" text="🗑  SUPPRIMER"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="saveButton" defaultButton="false" onAction="#onSave" styleClass="btn, btn-primary, btn-lg, pressable" text="ENREGISTRER"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</HBox>

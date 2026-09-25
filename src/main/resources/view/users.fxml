@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cafemanager.ui.SwitchControl?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="18" styleClass="screen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.UserController">
+    <children>
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <children>
+                        <VBox spacing="2">
+                            <children>
+                                <Label styleClass="screen-title" text="Utilisateurs"/>
+                                <Label fx:id="countLabel" styleClass="screen-sub"/>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button onAction="#onNew" styleClass="btn, btn-primary, pressable" text="＋  NOUVEL UTILISATEUR"/>
+                    </children>
+                </HBox>
+                <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxWidth="440" minWidth="400" prefWidth="410" styleClass="flat-scroll">
+            <content>
+                <VBox spacing="8" styleClass="form-card">
+                    <children>
+                        <Label fx:id="formTitle" styleClass="form-title" text="Nouvel utilisateur"/>
+
+                        <Label styleClass="field-label" text="NOM D'UTILISATEUR (CONNEXION)"/>
+                        <TextField fx:id="usernameField" promptText="ex. sara"/>
+
+                        <Label styleClass="field-label" text="NOM AFFICHÉ"/>
+                        <TextField fx:id="fullNameField" promptText="ex. Sara B."/>
+
+                        <Label styleClass="field-label" text="RÔLE"/>
+                        <ComboBox fx:id="roleBox" maxWidth="Infinity"/>
+                        <Label fx:id="roleHint" styleClass="form-hint" wrapText="true"/>
+
+                        <Label fx:id="passwordLabel" styleClass="field-label" text="MOT DE PASSE"/>
+                        <PasswordField fx:id="passwordField"/>
+                        <Label fx:id="passwordHint" styleClass="form-hint" wrapText="true"/>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <SwitchControl fx:id="activeSwitch"/>
+                                <Label text="Compte actif"/>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <Button fx:id="deleteButton" onAction="#onDelete" styleClass="btn, btn-danger-soft, pressable" text="🗑  SUPPRIMER"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button onAction="#onSave" styleClass="btn, btn-primary, btn-lg, pressable" text="ENREGISTRER"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</HBox>

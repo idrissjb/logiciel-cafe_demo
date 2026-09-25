@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cafemanager.ui.SwitchControl?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="18" styleClass="screen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.cafemanager.controller.CategoryController">
+    <children>
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <children>
+                        <VBox spacing="2">
+                            <children>
+                                <Label styleClass="screen-title" text="Catégories"/>
+                                <Label fx:id="countLabel" styleClass="screen-sub"/>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button onAction="#onNew" styleClass="btn, btn-primary, pressable" text="＋  NOUVELLE"/>
+                    </children>
+                </HBox>
+                <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxWidth="440" minWidth="400" prefWidth="410" styleClass="flat-scroll">
+            <content>
+                <VBox spacing="8" styleClass="form-card">
+                    <children>
+                        <Label fx:id="formTitle" styleClass="form-title" text="Nouvelle catégorie"/>
+
+                        <Label styleClass="field-label" text="NOM"/>
+                        <TextField fx:id="nameField" promptText="ex. Jus frais"/>
+
+                        <Label styleClass="field-label" text="ICÔNE"/>
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <children>
+                                <TextField fx:id="iconField" prefWidth="80" promptText="☕"/>
+                                <Button onAction="#onToggleEmoji" styleClass="btn, btn-secondary, pressable" text="Choisir une icône"/>
+                            </children>
+                        </HBox>
+                        <StackPane fx:id="emojiHolder" managed="false" visible="false"/>
+
+                        <Label styleClass="field-label" text="ORDRE D'AFFICHAGE"/>
+                        <Spinner fx:id="orderSpinner" editable="true" maxWidth="200" styleClass="split-arrows-horizontal"/>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <SwitchControl fx:id="activeSwitch"/>
+                                <Label text="Active (visible en caisse)"/>
+                            </children>
+                        </HBox>
+                        <Label styleClass="form-hint"
+                               text="Une catégorie inactive disparaît de la barre de catégories en caisse. Elle ne peut être supprimée que si elle ne contient aucun produit."
+                               wrapText="true"/>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <children>
+                                <Button fx:id="deleteButton" onAction="#onDelete" styleClass="btn, btn-danger-soft, pressable" text="🗑  SUPPRIMER"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button onAction="#onSave" styleClass="btn, btn-primary, btn-lg, pressable" text="ENREGISTRER"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</HBox>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import com.cafemanager.ui.PasswordStrengthMeter?>
+<?import com.cafemanager.ui.RevealPasswordField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="root" styleClass="login-root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.cafemanager.controller.LoginController">
+    <children>
+        <!-- Photo du café en fond : floutée et assombrie -->
+        <ImageView fx:id="bgImage" mouseTransparent="true" preserveRatio="false"/>
+        <Pane styleClass="login-scrim" mouseTransparent="true"/>
+        <Pane fx:id="glowLayer" mouseTransparent="true"/>
+
+        <HBox alignment="CENTER" fillHeight="false" spacing="64">
+            <children>
+                <!-- Photo du café -->
+                <StackPane fx:id="artBox" maxHeight="600" maxWidth="470" minHeight="600" minWidth="470" prefHeight="600"
+                           prefWidth="470" styleClass="login-photo">
+                    <children>
+                        <ImageView fx:id="photoView" preserveRatio="false"/>
+                        <Pane styleClass="login-photo-scrim" mouseTransparent="true"/>
+                        <VBox alignment="BOTTOM_LEFT" mouseTransparent="true" spacing="6">
+                            <padding>
+                                <Insets bottom="34" left="34" right="34" top="34"/>
+                            </padding>
+                            <children>
+                                <Label styleClass="login-tagline" text="Le café, simplement."/>
+                                <Label styleClass="login-tagline-sub" text="Caisse · Tables · Statistiques"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+
+                <!-- Carte de connexion (verre dépoli) -->
+                <VBox fx:id="card" maxWidth="440" minWidth="400" prefWidth="420" spacing="10" styleClass="login-card">
+                    <padding>
+                        <Insets bottom="36" left="38" right="38" top="34"/>
+                    </padding>
+                    <children>
+                        <Label styleClass="login-brand" text="☕  CAFÉ MANAGER"/>
+                        <Label fx:id="titleLabel" styleClass="login-welcome" text="Bienvenue"/>
+                        <Label fx:id="subtitleLabel" styleClass="login-sub" text="Connectez-vous pour ouvrir la caisse"/>
+
+                        <!-- Nom complet (inscription seulement) -->
+                        <VBox fx:id="fullNameBox" managed="false" spacing="6" visible="false">
+                            <VBox.margin>
+                                <Insets top="10"/>
+                            </VBox.margin>
+                            <children>
+                                <Label styleClass="field-label" text="Nom complet"/>
+                                <TextField fx:id="fullNameField" promptText="ex. Yassine Amrani" styleClass="login-input"/>
+                                <Label fx:id="fullNameError" managed="false" styleClass="field-error" visible="false" wrapText="true"/>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <VBox.margin>
+                                <Insets top="10"/>
+                            </VBox.margin>
+                            <children>
+                                <Label styleClass="field-label" text="Nom d'utilisateur"/>
+                                <TextField fx:id="usernameField" promptText="ex. yassine" styleClass="login-input"/>
+                                <Label fx:id="usernameError" managed="false" styleClass="field-error" visible="false" wrapText="true"/>
+                            </children>
+                        </VBox>
+
+                        <HBox spacing="12">
+                            <VBox.margin>
+                                <Insets top="6"/>
+                            </VBox.margin>
+                            <children>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="field-label" text="Mot de passe"/>
+                                        <RevealPasswordField fx:id="passwordField" promptText="••••••••"/>
+                                        <PasswordStrengthMeter fx:id="strengthMeter" managed="false" visible="false"/>
+                                        <Label fx:id="passwordError" managed="false" styleClass="field-error" visible="false" wrapText="true"/>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="confirmBox" managed="false" spacing="6" visible="false" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label styleClass="field-label" text="Confirmation"/>
+                                        <RevealPasswordField fx:id="confirmField" promptText="••••••••"/>
+                                        <Label fx:id="confirmError" managed="false" styleClass="field-error" visible="false" wrapText="true"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <VBox fx:id="roleGroup" managed="false" spacing="6" visible="false">
+                            <VBox.margin>
+                                <Insets top="6"/>
+                            </VBox.margin>
+                            <children>
+                                <Label styleClass="field-label" text="Rôle"/>
+                                <ComboBox fx:id="roleBox" maxWidth="Infinity" styleClass="login-input"/>
+                                <Label fx:id="roleError" managed="false" styleClass="field-error" visible="false" wrapText="true"/>
+                            </children>
+                        </VBox>
+
+                        <Label fx:id="errorLabel" managed="false" styleClass="login-error" visible="false" wrapText="true"/>
+
+                        <Button fx:id="submitButton" defaultButton="true" maxWidth="Infinity" onAction="#onSubmit"
+                                styleClass="btn, btn-primary, btn-xl, pressable" text="SE CONNECTER">
+                            <VBox.margin>
+                                <Insets top="12"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="switchButton" maxWidth="Infinity" onAction="#onSwitchMode"
+                                styleClass="btn, btn-ghost, pressable" text="Pas de compte ? Créer un compte"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</StackPane>

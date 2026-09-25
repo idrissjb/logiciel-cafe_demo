@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<BorderPane fx:id="root" styleClass="app-root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.cafemanager.controller.MainController">
+    <left>
+        <VBox fx:id="sidebar" minWidth="84" prefWidth="252" styleClass="sidebar"/>
+    </left>
+    <top>
+        <HBox fx:id="topBar" alignment="CENTER_LEFT" fillHeight="false" spacing="14" styleClass="topbar">
+            <padding>
+                <Insets bottom="0" left="26" right="22" top="0"/>
+            </padding>
+            <children>
+                <Label fx:id="pageTitle" styleClass="page-title" text="Caisse"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox alignment="CENTER" spacing="8" styleClass="chip-info">
+                    <children>
+                        <Label fx:id="avatarLabel" styleClass="avatar"/>
+                        <Label fx:id="userLabel" styleClass="chip-text"/>
+                    </children>
+                </HBox>
+                <Label fx:id="dateLabel" styleClass="topbar-date"/>
+                <Label fx:id="clockLabel" styleClass="topbar-clock"/>
+                <Label fx:id="registerLabel" styleClass="chip-info, chip-text"/>
+                <Button fx:id="settingsButton" onAction="#onSettings" styleClass="icon-btn, pressable" text="⚙"/>
+                <Button fx:id="logoutButton" onAction="#onLogout" styleClass="icon-btn, icon-btn-danger, pressable">
+                    <graphic>
+                        <SVGPath styleClass="icon-svg" content="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <StackPane fx:id="content" styleClass="content-area"/>
+    </center>
+</BorderPane>
