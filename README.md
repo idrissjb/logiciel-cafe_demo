@@ -3,7 +3,23 @@
 Application de bureau **JavaFX + SQLite** (Maven), interface sombre « premium », pensée pour l'écran tactile
 (cartes produits 3D, boutons larges, animations 100–200 ms, raccourcis clavier).
 
-## Lancer l'application
+## Télécharger (Windows, sans installation)
+
+Téléchargez `CafeManager-1.0.0-windows.zip` dans l'onglet **Releases** du dépôt, extrayez-le, puis lancez
+`Cafe Manager.exe`. Java, JavaFX et la base SQLite sont inclus. Si Windows SmartScreen s'affiche
+(application non signée) : « Informations complémentaires » → « Exécuter quand même ».
+
+## Générer le .exe soi-même
+
+Prérequis : JDK 17+ (avec `jpackage`) et Maven.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File packaging\build-windows.ps1
+```
+
+Résultat : `dist\Cafe Manager\Cafe Manager.exe` et `dist\CafeManager-1.0.0-windows.zip`.
+
+## Lancer l'application (développement)
 
 Prérequis : **JDK 17 ou plus** et **Maven 3.8+** (connexion Internet la première fois pour télécharger JavaFX et SQLite).
 

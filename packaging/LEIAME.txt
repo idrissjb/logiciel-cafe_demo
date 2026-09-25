@@ -1,0 +1,24 @@
+CAFE MANAGER - caisse pour cafe / cafeteria
+============================================
+
+1. Decompressez tout le dossier "Cafe Manager" (clic droit > Extraire tout).
+2. Double-cliquez sur "Cafe Manager.exe".
+
+Aucune installation : Java, JavaFX et la base de donnees (SQLite) sont inclus.
+
+Comptes de demonstration
+------------------------
+  admin    / admin123   Administrateur
+  sara     / 1234       Caissier
+  yassine  / 1234       Serveur
+
+Donnees
+-------
+Vos donnees sont enregistrees dans  C:\Users\<votre nom>\.cafemanager\
+(base cafe.db, images, exports PDF). Pour repartir de zero, fermez
+l'application et supprimez ce dossier.
+
+Windows SmartScreen
+-------------------
+L'application n'est pas signee : si Windows affiche "Windows a protege votre
+PC", cliquez sur "Informations complementaires" puis "Executer quand meme".
